@@ -2789,7 +2789,8 @@ def get_suggested_courses(category, score):
 
     return suggested_courses
 
-        # Example: Suggest jobs based on the highest score category
+        # Example: Suggest j
+        # obs based on the highest score category
        
 
 def get_suggested_jobs(category, score):

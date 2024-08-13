@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Fonts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script> <!-- jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script><!-- jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 </head>
 {% load static %}
 <style>
@@ -402,130 +403,161 @@ h1 img {
 
     <!-- Download PDF Button -->
    <!-- Download PDF Button -->
-<button id="download-pdf">Download PDF</button>
+<button id="download-pdf">Download PDF</button>     
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var ctx = document.getElementById('careerChart').getContext('2d');
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var ctx = document.getElementById('careerChart').getContext('2d');
-    
-            // Create a gradient for the bar fill
-            var gradient = ctx.createLinearGradient(0, 0, 0, 400);
-            gradient.addColorStop(0, 'rgba(255, 215, 0, 0.8)'); // Gold at the top
-            gradient.addColorStop(1, 'rgba(102, 252, 241, 0.8)'); // Teal at the bottom
-    
-            // Determine the index of the highest score
-            var scores = [{% for category, score in career_scores.items %}{{ score }},{% endfor %}];
-            var maxScore = Math.max(...scores);
-            var maxIndex = scores.indexOf(maxScore);
-    
-            var careerChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: [{% for category, score in career_scores.items %}'{{ category }}',{% endfor %}],
-                    datasets: [{
-                        label: 'Career Quiz Results',
-                        data: scores,
-                        backgroundColor: function(context) {
-                            var index = context.dataIndex;
-                            return index === maxIndex ? 'rgba(255, 69, 0, 0.8)' : gradient; // Highlight max bar in red
-                        },
-                        borderColor: '#1a1a1d',
-                        borderWidth: 2,
-                        borderRadius: 20, // Larger rounded corners for the bars
-                        borderSkipped: false, // No border skipping for rounded corners
-                        hoverBackgroundColor: function(context) {
-                            var index = context.dataIndex;
-                            return index === maxIndex ? 'rgba(255, 99, 71, 1)' : 'rgba(255, 215, 0, 1)'; // Highlight max bar on hover
-                        },
-                        hoverBorderColor: '#66fcf1',
-                        hoverBorderWidth: 3, // Thicker border on hover
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                color: '#2f2f2f',
-                                borderDash: [5, 5], // Dashed grid lines for a modern look
-                            },
-                            ticks: {
-                                color: '#c5c6c7',
-                                font: {
-                                    family: 'Montserrat',
-                                    size: 14,
-                                    weight: 'bold' // Bold text for the ticks
-                                }
-                            }
-                        },
-                        x: {
-                            grid: {
-                                color: 'transparent', // No grid lines for the x-axis
-                            },
-                            ticks: {
-                                color: function(context) {
-                                    var index = context.index;
-                                    return index === maxIndex ? '#FFD700' : '#c5c6c7'; // Highlight max label in gold
-                                },
-                                font: {
-                                    family: 'Montserrat',
-                                    size: 14,
-                                    weight: function(context) {
-                                        return context.index === maxIndex ? 'bold' : 'normal'; // Bold font for max label
-                                    }
-                                }
-                            }
-                        }
+        // Create a gradient for the bar fill
+        var gradient = ctx.createLinearGradient(0, 0, 0, 400);
+        gradient.addColorStop(0, 'rgba(255, 215, 0, 0.8)'); // Gold at the top
+        gradient.addColorStop(1, 'rgba(102, 252, 241, 0.8)'); // Teal at the bottom
+
+        // Example scores for debugging
+        var scores = [10, 20, 30, 40]; // Replace with your actual data
+        var maxScore = Math.max(...scores);
+        var maxIndex = scores.indexOf(maxScore);
+
+        var careerChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4'], // Replace with your actual labels
+                datasets: [{
+                    label: 'Career Quiz Results',
+                    data: scores,
+                    backgroundColor: function(context) {
+                        var index = context.dataIndex;
+                        return index === maxIndex ? 'rgba(255, 69, 0, 0.8)' : gradient; // Highlight max bar in red
                     },
-                    plugins: {
-                        legend: {
-                            display: false, // Hide legend to reduce clutter
+                    borderColor: '#1a1a1d',
+                    borderWidth: 2,
+                    borderRadius: 20, // Larger rounded corners for the bars
+                    borderSkipped: false, // No border skipping for rounded corners
+                    hoverBackgroundColor: function(context) {
+                        var index = context.dataIndex;
+                        return index === maxIndex ? 'rgba(255, 99, 71, 1)' : 'rgba(255, 215, 0, 1)'; // Highlight max bar on hover
+                    },
+                    hoverBorderColor: '#66fcf1',
+                    hoverBorderWidth: 3, // Thicker border on hover
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#2f2f2f',
+                            borderDash: [5, 5], // Dashed grid lines for a modern look
                         },
-                        tooltip: {
-                            backgroundColor: '#2f2f2f',
-                            titleColor: '#FFD700',
-                            bodyColor: '#c5c6c7',
-                            titleFont: {
-                                family: 'Raleway',
-                                size: 16,
-                                weight: 'bold' // Bold title in the tooltip
-                            },
-                            bodyFont: {
+                        ticks: {
+                            color: '#c5c6c7',
+                            font: {
                                 family: 'Montserrat',
                                 size: 14,
-                            },
-                            borderColor: '#FFD700',
-                            borderWidth: 1,
-                            caretPadding: 10,
-                            cornerRadius: 10, // Rounded corners for the tooltip
+                                weight: 'bold' // Bold text for the ticks
+                            }
                         }
                     },
-                    animation: {
-                        duration: 1500, // Slow down the animation for effect
-                        easing: 'easeInOutQuad' // Smooth animation
+                    x: {
+                        grid: {
+                            color: 'transparent', // No grid lines for the x-axis
+                        },
+                        ticks: {
+                            color: function(context) {
+                                var index = context.index;
+                                return index === maxIndex ? '#FFD700' : '#c5c6c7'; // Highlight max label in gold
+                            },
+                            font: {
+                                family: 'Montserrat',
+                                size: 14,
+                                weight: function(context) {
+                                    return context.index === maxIndex ? 'bold' : 'normal'; // Bold font for max label
+                                }
+                            }
+                        }
                     }
-                }
-            });
-    
-            // Download PDF functionality
-            const downloadBtn = document.getElementById('download-pdf');
-    
-            downloadBtn.addEventListener('click', function() {
-                const pdf = new jsPDF();
-                const container = document.body;
-    
-                // Generate PDF from HTML
-                pdf.html(container, {
-                    callback: function (pdf) {
-                        pdf.save('combined_results.pdf');
+                },
+                plugins: {
+                    legend: {
+                        display: false, // Hide legend to reduce clutter
                     },
-                    x: 10,
-                    y: 10
-                });
-            });
+                    tooltip: {
+                        backgroundColor: '#2f2f2f',
+                        titleColor: '#FFD700',
+                        bodyColor: '#c5c6c7',
+                        titleFont: {
+                            family: 'Raleway',
+                            size: 16,
+                            weight: 'bold' // Bold title in the tooltip
+                        },
+                        bodyFont: {
+                            family: 'Montserrat',
+                            size: 14,
+                        },
+                        borderColor: '#FFD700',
+                        borderWidth: 1,
+                        caretPadding: 10,
+                        cornerRadius: 10, // Rounded corners for the tooltip
+                    }
+                },
+                animation: {
+                    duration: 1500, // Slow down the animation for effect
+                    easing: 'easeInOutQuad' // Smooth animation
+                }
+            }
         });
-    </script>
-    
+
+        // Download PDF functionality
+        const downloadBtn = document.getElementById('download-pdf');
+
+downloadBtn.addEventListener('click', function() {
+    console.log('Download button clicked');
+    downloadBtn.style.display = 'none';
+
+    // Capture the entire page content
+    html2canvas(document.body, {
+        onrendered: function(canvas) {
+            console.log('html2canvas successfully captured the page');
+
+            // Convert the canvas to an image
+            var imgData = canvas.toDataURL('image/png');
+            console.log('Image data URL generated');
+
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF();
+
+            // Page dimensions in mm
+            const pdfWidth = 210; // A4 width
+            const pdfHeight = 297; // A4 height
+
+            // Dimensions of the image in mm
+            const imgWidth = pdfWidth;
+            const imgHeight = canvas.height * imgWidth / canvas.width;
+
+            // Calculate the number of pages
+            const totalPages = Math.ceil(imgHeight / pdfHeight);
+
+            for (let i = 0; i < totalPages; i++) {
+                const yOffset = i * pdfHeight;
+                const pageHeight = Math.min(pdfHeight, imgHeight - yOffset);
+
+                if (i > 0) {
+                    pdf.addPage();
+                }
+
+                // Add the image to the PDF
+                pdf.addImage(imgData, 'PNG', 0, -yOffset, imgWidth, imgHeight);
+                console.log(`Page ${i + 1} added to PDF`);
+            }
+
+            // Save the PDF
+            pdf.save('results_page.pdf');
+            console.log('PDF saved successfully');
+        }
+    });
+});
+});
+</script>
     
     
 </body>

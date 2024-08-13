@@ -2968,6 +2968,391 @@ def get_job_information(job_title):
             "description": "HR Managers oversee human resources functions, including recruitment, employee relations, and compliance.",
             "salary": "$60,000 - $100,000 per year"
         },
+
+	"Sales Director": {
+        "description": "Sales Directors oversee and lead the sales operations and strategies within a company.",
+        "salary": "$100,000 - $160,000 per year"
+        },
+        "Business Development Manager": {
+        "description": "Business Development Managers identify new business opportunities and build relationships.",
+        "salary": "$85,000 - $140,000 per year"
+       },
+    	"Sales Manager": {
+        "description": "Sales Managers lead a team of salespeople and strategize to meet sales targets.",
+        "salary": "$70,000 - $120,000 per year"
+        },
+        "Account Manager": {
+        "description": "Account Managers manage client relationships and ensure their needs are met.",
+        "salary": "$60,000 - $100,000 per year"
+        },
+    	"Sales Executive": {
+        "description": "Sales Executives sell products or services to clients and close sales deals.",
+        "salary": "$50,000 - $90,000 per year"
+   	 },
+    	"Sales Consultant": {
+        "description": "Sales Consultants provide expert advice on products or services to clients.",
+        "salary": "$45,000 - $85,000 per year"
+    },
+    "Sales Representative": {
+        "description": "Sales Representatives sell products or services and maintain customer relationships.",
+        "salary": "$40,000 - $75,000 per year"
+    },
+    "Sales Intern": {
+        "description": "Sales Interns support sales teams and gain experience in sales processes.",
+        "salary": "$25,000 - $35,000 per year"
+    },
+    "HR Director": {
+        "description": "HR Directors oversee the entire HR department and strategy within an organization.",
+        "salary": "$100,000 - $160,000 per year"
+    },
+    "Senior HR Manager": {
+        "description": "Senior HR Managers manage HR policies, practices, and staff.",
+        "salary": "$85,000 - $140,000 per year"
+    },
+    "HR Manager": {
+        "description": "HR Managers lead and coordinate the HR department's activities.",
+        "salary": "$70,000 - $120,000 per year"
+    },
+    "Talent Acquisition Manager": {
+        "description": "Talent Acquisition Managers oversee recruitment and hiring strategies.",
+        "salary": "$65,000 - $110,000 per year"
+    },
+    "HR Coordinator": {
+        "description": "HR Coordinators assist with HR processes and administrative tasks.",
+        "salary": "$50,000 - $75,000 per year"
+    },
+    "HR Specialist": {
+        "description": "HR Specialists handle specific HR functions like recruiting, training, or employee relations.",
+        "salary": "$55,000 - $90,000 per year"
+    },
+    "HR Assistant": {
+        "description": "HR Assistants support HR managers and staff with clerical and administrative tasks.",
+        "salary": "$35,000 - $50,000 per year"
+    },
+    "HR Intern": {
+        "description": "HR Interns gain experience in human resources by assisting with various HR tasks.",
+        "salary": "$25,000 - $35,000 per year"
+    },
+    "Senior Content Writer": {
+        "description": "Senior Content Writers create high-quality content and guide junior writers.",
+        "salary": "$65,000 - $100,000 per year"
+    },
+    "Content Manager": {
+        "description": "Content Managers oversee the creation, curation, and strategy of content.",
+        "salary": "$70,000 - $110,000 per year"
+    },
+    "Content Writer": {
+        "description": "Content Writers create written content for websites, blogs, and marketing materials.",
+        "salary": "$45,000 - $75,000 per year"
+    },
+    "Copywriter": {
+        "description": "Copywriters write persuasive and compelling marketing and advertising copy.",
+        "salary": "$50,000 - $80,000 per year"
+    },
+    "Junior Content Writer": {
+        "description": "Junior Content Writers assist in creating content and learn from senior writers.",
+        "salary": "$35,000 - $55,000 per year"
+    },
+    "Editorial Assistant": {
+        "description": "Editorial Assistants support the editorial team with content preparation and research.",
+        "salary": "$30,000 - $45,000 per year"
+    },
+    "Content Intern": {
+        "description": "Content Interns assist with content creation and editing while gaining industry experience.",
+        "salary": "$25,000 - $35,000 per year"
+    },
+    "Freelance Writer": {
+        "description": "Freelance Writers create content on a contract basis for various clients.",
+        "salary": "Varies by project"
+    },
+    "Senior Financial Analyst": {
+        "description": "Senior Financial Analysts evaluate financial data and advise on financial decisions.",
+        "salary": "$85,000 - $130,000 per year"
+    },
+    "Financial Manager": {
+        "description": "Financial Managers oversee the financial health and strategies of an organization.",
+        "salary": "$90,000 - $150,000 per year"
+    },
+    "Financial Analyst": {
+        "description": "Financial Analysts assess financial data to help businesses make informed decisions.",
+        "salary": "$65,000 - $95,000 per year"
+    },
+    "Investment Analyst": {
+        "description": "Investment Analysts analyze financial data and trends to recommend investment opportunities.",
+        "salary": "$70,000 - $110,000 per year"
+    },
+    "Junior Financial Analyst": {
+        "description": "Junior Financial Analysts assist senior analysts in financial data analysis.",
+        "salary": "$50,000 - $70,000 per year"
+    },
+    "Finance Associate": {
+        "description": "Finance Associates support financial operations and analysis in an organization.",
+        "salary": "$55,000 - $75,000 per year"
+    },
+    "Financial Intern": {
+        "description": "Financial Interns assist with financial data and learn from experienced financial professionals.",
+        "salary": "$25,000 - $35,000 per year"
+    },
+    "Entry-Level Financial Analyst": {
+        "description": "Entry-Level Financial Analysts begin their careers by analyzing financial data under supervision.",
+        "salary": "$50,000 - $65,000 per year"
+    },
+    "PR Manager": {
+        "description": "PR Managers oversee public relations strategies and manage company reputation.",
+        "salary": "$80,000 - $130,000 per year"
+    },
+    "Senior PR Specialist": {
+        "description": "Senior PR Specialists manage high-profile PR campaigns and media relations.",
+        "salary": "$65,000 - $100,000 per year"
+    },
+    "PR Specialist": {
+        "description": "PR Specialists create and implement public relations strategies to promote a company or client.",
+        "salary": "$55,000 - $85,000 per year"
+    },
+    "Public Relations Officer": {
+        "description": "Public Relations Officers manage communication between a company and the public.",
+        "salary": "$50,000 - $80,000 per year"
+    },
+    "Junior PR Specialist": {
+        "description": "Junior PR Specialists assist in PR tasks and learn from experienced professionals.",
+        "salary": "$40,000 - $60,000 per year"
+    },
+    "PR Coordinator": {
+        "description": "PR Coordinators organize PR events and coordinate media coverage.",
+        "salary": "$45,000 - $70,000 per year"
+    },
+    "PR Assistant": {
+        "description": "PR Assistants support PR teams with administrative tasks and media outreach.",
+        "salary": "$35,000 - $50,000 per year"
+    },
+    "PR Intern": {
+        "description": "PR Interns gain experience in public relations by supporting various PR activities.",
+        "salary": "$25,000 - $35,000 per year"
+    },
+    "Marketing Director": {
+        "description": "Marketing Directors oversee the overall marketing strategy and operations of a company.",
+        "salary": "$110,000 - $170,000 per year"
+    },
+    "Senior Marketing Manager": {
+        "description": "Senior Marketing Managers lead marketing campaigns and guide junior marketers.",
+        "salary": "$90,000 - $140,000 per year"
+    },
+    "Marketing Manager": {
+        "description": "Marketing Managers plan and execute marketing strategies to promote products or services.",
+        "salary": "$75,000 - $120,000 per year"
+    },
+    "Brand Manager": {
+        "description": "Brand Managers develop and manage the identity and image of a brand.",
+        "salary": "$70,000 - $115,000 per year"
+    },
+    "Marketing Coordinator": {
+        "description": "Marketing Coordinators assist in the execution of marketing campaigns and activities.",
+        "salary": "$50,000 - $75,000 per year"
+    },
+    "Product Marketing Specialist": {
+        "description": "Product Marketing Specialists focus on marketing specific products or product lines.",
+        "salary": "$65,000 - $100,000 per year"
+    },
+    "Marketing Assistant": {
+        "description": "Marketing Assistants support the marketing team with administrative and operational tasks.",
+        "salary": "$35,000 - $50,000 per year"
+    },
+    "Marketing Intern": {
+        "description": "Marketing Interns gain hands-on experience in marketing by assisting with various tasks.",
+        "salary": "$25,000 - $35,000 per year"
+    },
+    "IFS Senior Officer": {
+        "description": "IFS Senior Officers oversee operations and manage teams in the Indian Foreign Service.",
+        "salary": "$100,000 - $150,000 per year"
+    },
+    "IFS Manager": {
+        "description": "IFS Managers handle specific diplomatic or administrative tasks in the Indian Foreign Service.",
+        "salary": "$85,000 - $130,000 per year"
+    },
+    "IFS Officer": {
+        "description": "IFS Officers represent India abroad and handle diplomatic duties.",
+        "salary": "$70,000 - $110,000 per year"
+    },
+    "IFS Analyst": {
+        "description": "IFS Analysts research and analyze international relations and policy.",
+        "salary": "$60,000 - $95,000 per year"
+    },
+    "Junior IFS Officer": {
+        "description": "Junior IFS Officers assist in diplomatic duties and learn from senior officers.",
+        "salary": "$50,000 - $80,000 per year"
+    },
+    "IFS Associate": {
+        "description": "IFS Associates support senior officers in diplomatic and administrative tasks.",
+        "salary": "$55,000 - $85,000 per year"
+    },
+    "IFS Intern": {
+        "description": "IFS Interns gain experience in foreign service by supporting various tasks.",
+        "salary": "$25,000 - $35,000 per year"
+    },
+    "Entry-Level IFS Officer": {
+        "description": "Entry-Level IFS Officers start their career by handling basic diplomatic responsibilities.",
+        "salary": "$50,000 - $70,000 per year"
+    },
+    "Senior IPS Officer": {
+        "description": "Senior IPS Officers manage police operations and law enforcement in the Indian Police Service.",
+        "salary": "$100,000 - $150,000 per year"
+    },
+    "IPS Director": {
+        "description": "IPS Directors oversee and lead police forces at the state or national level.",
+        "salary": "$110,000 - $170,000 per year"
+    },
+    "IPS Officer": {
+        "description": "IPS Officers maintain law and order and manage police operations in their jurisdiction.",
+        "salary": "$70,000 - $110,000 per year"
+    },
+    "IPS Deputy Superintendent": {
+        "description": "IPS Deputy Superintendents assist senior officers in managing police operations.",
+        "salary": "$65,000 - $95,000 per year"
+    },
+    "Assistant IPS Officer": {
+        "description": "Assistant IPS Officers support senior officers in maintaining law and order.",
+        "salary": "$50,000 - $80,000 per year"
+    },
+    "Junior IPS Officer": {
+        "description": "Junior IPS Officers begin their careers by assisting in police operations.",
+        "salary": "$45,000 - $70,000 per year"
+    },
+    "IPS Trainee": {
+        "description": "IPS Trainees undergo training to become full-fledged IPS officers.",
+        "salary": "$30,000 - $45,000 per year"
+    },
+    "IPS Intern": {
+        "description": "IPS Interns gain experience in law enforcement by assisting in various police activities.",
+        "salary": "$25,000 - $35,000 per year"
+    },
+    "Senior IAS Officer": {
+        "description": "Senior IAS Officers manage administrative functions and implement government policies.",
+        "salary": "$100,000 - $150,000 per year"
+    },
+    "IAS Director": {
+        "description": "IAS Directors oversee the administration of a district or department within the government.",
+        "salary": "$110,000 - $170,000 per year"
+    },
+    "IAS Officer": {
+        "description": "IAS Officers handle administrative responsibilities and implement policies in their jurisdiction.",
+        "salary": "$70,000 - $110,000 per year"
+    },
+    "IAS Assistant Commissioner": {
+        "description": "IAS Assistant Commissioners support senior officers in administrative tasks and policy implementation.",
+        "salary": "$65,000 - $95,000 per year"
+    },
+    "Junior IAS Officer": {
+        "description": "Junior IAS Officers begin their careers by assisting in administrative duties.",
+        "salary": "$50,000 - $80,000 per year"
+    },
+    "IAS Executive Officer": {
+        "description": "IAS Executive Officers manage specific administrative functions within a department.",
+        "salary": "$55,000 - $85,000 per year"
+    },
+    "IAS Trainee": {
+        "description": "IAS Trainees undergo training to become full-fledged IAS officers.",
+        "salary": "$30,000 - $45,000 per year"
+    },
+    "IAS Intern": {
+        "description": "IAS Interns gain experience in administration by supporting various governmental tasks.",
+        "salary": "$25,000 - $35,000 per year"
+    },
+    "Communication Director": {
+        "description": "Communication Directors oversee all aspects of communication and public relations within an organization.",
+        "salary": "$100,000 - $160,000 per year"
+    },
+    "Senior Communications Manager": {
+        "description": "Senior Communications Managers develop and manage communication strategies.",
+        "salary": "$85,000 - $130,000 per year"
+    },
+    "Communications Manager": {
+        "description": "Communications Managers plan and execute communication strategies to promote the organization's message.",
+        "salary": "$70,000 - $110,000 per year"
+    },
+    "Public Relations Specialist": {
+        "description": "Public Relations Specialists manage the public image of a company or client.",
+        "salary": "$55,000 - $85,000 per year"
+    },
+    "Communications Coordinator": {
+        "description": "Communications Coordinators assist in managing communication projects and media relations.",
+        "salary": "$50,000 - $75,000 per year"
+    },
+    "Media Relations Specialist": {
+        "description": "Media Relations Specialists manage interactions between the organization and the media.",
+        "salary": "$55,000 - $90,000 per year"
+    },
+    "Communications Assistant": {
+        "description": "Communications Assistants support communication teams with administrative and operational tasks.",
+        "salary": "$35,000 - $50,000 per year"
+    },
+    "Communications Intern": {
+        "description": "Communications Interns gain experience in communication and public relations by assisting with various tasks.",
+        "salary": "$25,000 - $35,000 per year"
+    },
+    "Strategic Consultant": {
+        "description": "Strategic Consultants provide expert advice on business strategies to improve company performance.",
+        "salary": "$90,000 - $150,000 per year"
+    },
+    "Senior Analyst": {
+        "description": "Senior Analysts analyze data and trends to provide insights and recommendations.",
+        "salary": "$80,000 - $120,000 per year"
+    },
+    "Analyst": {
+        "description": "Analysts examine data to help businesses make informed decisions.",
+        "salary": "$60,000 - $95,000 per year"
+    },
+    "Critical Thinking Specialist": {
+        "description": "Critical Thinking Specialists analyze complex problems and develop innovative solutions.",
+        "salary": "$70,000 - $110,000 per year"
+    },
+    "Junior Analyst": {
+        "description": "Junior Analysts assist senior analysts in data analysis and research.",
+        "salary": "$45,000 - $70,000 per year"
+    },
+    "Research Assistant": {
+        "description": "Research Assistants support research activities by collecting and analyzing data.",
+        "salary": "$40,000 - $65,000 per year"
+    },
+    "Intern": {
+        "description": "Interns gain hands-on experience in their field by supporting various tasks.",
+        "salary": "$25,000 - $35,000 per year"
+    },
+    "Entry-Level Analyst": {
+        "description": "Entry-Level Analysts begin their careers by analyzing data under the supervision of senior analysts.",
+        "salary": "$50,000 - $70,000 per year"
+    },
+    "HR Manager": {
+        "description": "HR Managers lead and coordinate the HR department's activities.",
+        "salary": "$70,000 - $120,000 per year"
+    },
+    "Leadership Coach": {
+        "description": "Leadership Coaches mentor and guide leaders to improve their management skills.",
+        "salary": "$80,000 - $130,000 per year"
+    },
+    "HR Specialist": {
+        "description": "HR Specialists handle specific HR functions like recruiting, training, or employee relations.",
+        "salary": "$55,000 - $90,000 per year"
+    },
+    "Employee Relations Manager": {
+        "description": "Employee Relations Managers handle employee relations and resolve workplace issues.",
+        "salary": "$65,000 - $100,000 per year"
+    },
+    "HR Coordinator": {
+        "description": "HR Coordinators assist with HR processes and administrative tasks.",
+        "salary": "$50,000 - $75,000 per year"
+    },
+    "Talent Development Specialist": {
+        "description": "Talent Development Specialists focus on employee training and development programs.",
+        "salary": "$60,000 - $95,000 per year"
+    },
+    "HR Assistant": {
+        "description": "HR Assistants support HR managers and staff with clerical and administrative tasks.",
+        "salary": "$35,000 - $50,000 per year"
+    },
+    "HR Intern": {
+        "description": "HR Interns gain experience in human resources by assisting with various HR tasks.",
+        "salary": "$25,000 - $35,000 per year"
+    },
 	     
   
 

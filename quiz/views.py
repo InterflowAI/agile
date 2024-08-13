@@ -14,7 +14,8 @@ def home(request):
 from django.shortcuts import render, redirect
 from .forms import QuizForm
 
-
+def contact(request):
+    return render(request,"contact.html")
 
 def index(request):
     if request.method == 'POST':

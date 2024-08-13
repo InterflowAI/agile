@@ -315,7 +315,7 @@
         <select id="sectionSelect" onchange="scrollToSection(this.value)">
             <option value="">Select a section</option>
             {% for category, questions in questions.items %}
-                <option value="{{ category }}">{{ category|title }} </option>
+                <option value="{{ category }}">{{ category|title }} Questions</option>
             {% endfor %}
         </select>
     </div>
@@ -326,7 +326,7 @@
             <h2>Career Quiz</h2>
 
             {% for category, questions in questions.items %}
-                <h3>{{ category|title }} </h3>
+                <h3>{{ category|title }} Questions</h3>
                 <div id="{{ category }}" class="section">
                     {% for question in questions %}
                         <p>{{ question.question }}</p>
@@ -343,6 +343,29 @@
             <button type="submit">Submit</button>
         </form>
     </div>
+    <footer style="
+    background-color: #2b2b2d; 
+    color: #e0e0e0; 
+    padding: 20px; 
+    text-align: center; 
+    font-size: 0.9em; 
+    border-top: 1px solid #333; 
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5); 
+    margin-top: 10px; 
+    position: relative; 
+    width: none; 
+    bottom: 0; 
+">
+    <div style="
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+    ">
+        <p style="margin: 0; margin-bottom: 10px;">&copy; 2024 Developed by INTERFLOW AI.</p>
+        <p style="margin: 0; color: #d4af37;">interflow.ai@gmail.com</p>
+    </div>
+</footer>
+      
 
     <script>
         function selectOption(option) {

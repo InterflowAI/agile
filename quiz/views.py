@@ -2521,6 +2521,270 @@ def get_suggested_courses(category, score):
                 {"name": "Content Writing for Beginners", "description": "Introduction to content writing for new writers.", "url": "https://example.com/content-writing-for-beginners"},
                 {"name": "Writing Skills for Content", "description": "Basic writing skills for effective content creation.", "url": "https://example.com/writing-skills-for-content"},
             ])
+    if category == 'content_writer':
+        if score >= 7:
+            suggested_courses.extend([
+                {"name": "Advanced Content Strategy", "description": "Developing and executing advanced content strategies.", "url": "https://example.com/advanced-content-strategy"},
+                {"name": "Creative Writing Masterclass", "description": "Masterclass in creative writing techniques.", "url": "https://example.com/creative-writing-masterclass"},
+            ])
+        elif score >= 5:
+            suggested_courses.extend([
+                {"name": "SEO Content Writing", "description": "Learn to write SEO-friendly content.", "url": "https://example.com/seo-content-writing"},
+                {"name": "Copywriting Essentials", "description": "Essential skills for professional copywriting.", "url": "https://example.com/copywriting-essentials"},
+            ])
+        elif score >= 3:
+            suggested_courses.extend([
+                {"name": "Blogging for Beginners", "description": "Basics of starting and maintaining a blog.", "url": "https://example.com/blogging-for-beginners"},
+                {"name": "Content Marketing Fundamentals", "description": "Introduction to content marketing strategies.", "url": "https://example.com/content-marketing-fundamentals"},
+            ])
+        elif score >= 1:
+            suggested_courses.extend([
+                {"name": "Introduction to Content Writing", "description": "Basic principles of content writing.", "url": "https://example.com/intro-to-content-writing"},
+                {"name": "Writing for Social Media", "description": "Creating content for social media platforms.", "url": "https://example.com/writing-for-social-media"},
+            ])
+
+    if category == 'financial_analyst':
+        if score >= 7:
+            suggested_courses.extend([
+                {"name": "Advanced Financial Modeling", "description": "Advanced techniques in financial modeling and analysis.", "url": "https://example.com/advanced-financial-modeling"},
+                {"name": "Corporate Finance Strategies", "description": "In-depth study of corporate finance and strategies.", "url": "https://example.com/corporate-finance-strategies"},
+            ])
+        elif score >= 5:
+            suggested_courses.extend([
+                {"name": "Investment Analysis", "description": "Principles and practices of investment analysis.", "url": "https://example.com/investment-analysis"},
+                {"name": "Financial Risk Management", "description": "Study of financial risk and its management.", "url": "https://example.com/financial-risk-management"},
+            ])
+        elif score >= 3:
+            suggested_courses.extend([
+                {"name": "Introduction to Financial Analysis", "description": "Basics of financial analysis and reporting.", "url": "https://example.com/intro-to-financial-analysis"},
+                {"name": "Accounting Fundamentals", "description": "Introduction to accounting principles.", "url": "https://example.com/accounting-fundamentals"},
+            ])
+        elif score >= 1:
+            suggested_courses.extend([
+                {"name": "Personal Finance Basics", "description": "Basic principles of managing personal finances.", "url": "https://example.com/personal-finance-basics"},
+                {"name": "Introduction to Investment", "description": "Introduction to basic investment concepts.", "url": "https://example.com/intro-to-investment"},
+            ])
+
+    if category == 'pr_specialist':
+        if score >= 7:
+            suggested_courses.extend([
+                {"name": "Advanced Public Relations", "description": "Advanced strategies in public relations and media management.", "url": "https://example.com/advanced-public-relations"},
+                {"name": "Crisis Communication", "description": "Managing communication during crises.", "url": "https://example.com/crisis-communication"},
+            ])
+        elif score >= 5:
+            suggested_courses.extend([
+                {"name": "Media Relations", "description": "Developing and maintaining relationships with the media.", "url": "https://example.com/media-relations"},
+                {"name": "Brand Communication", "description": "Strategies for effective brand communication.", "url": "https://example.com/brand-communication"},
+            ])
+        elif score >= 3:
+            suggested_courses.extend([
+                {"name": "Public Relations Basics", "description": "Introduction to the fundamentals of public relations.", "url": "https://example.com/public-relations-basics"},
+                {"name": "Social Media PR", "description": "Utilizing social media for public relations.", "url": "https://example.com/social-media-pr"},
+            ])
+        elif score >= 1:
+            suggested_courses.extend([
+                {"name": "Introduction to PR", "description": "Basic principles of public relations.", "url": "https://example.com/intro-to-pr"},
+                {"name": "Writing for Public Relations", "description": "Effective writing techniques for PR professionals.", "url": "https://example.com/writing-for-pr"},
+            ])
+
+    if category == 'sales_manager':
+        if score >= 7:
+            suggested_courses.extend([
+                {"name": "Advanced Sales Management", "description": "Advanced strategies for managing sales teams.", "url": "https://example.com/advanced-sales-management"},
+                {"name": "Strategic Sales Planning", "description": "Developing strategic sales plans.", "url": "https://example.com/strategic-sales-planning"},
+            ])
+        elif score >= 5:
+            suggested_courses.extend([
+                {"name": "Sales Leadership", "description": "Leading and motivating sales teams.", "url": "https://example.com/sales-leadership"},
+                {"name": "Key Account Management", "description": "Managing and nurturing key client accounts.", "url": "https://example.com/key-account-management"},
+            ])
+        elif score >= 3:
+            suggested_courses.extend([
+                {"name": "Sales Techniques", "description": "Effective sales techniques and strategies.", "url": "https://example.com/sales-techniques"},
+                {"name": "Customer Relationship Management", "description": "Managing customer relationships effectively.", "url": "https://example.com/customer-relationship-management"},
+            ])
+        elif score >= 1:
+            suggested_courses.extend([
+                {"name": "Introduction to Sales", "description": "Basic principles of sales and selling techniques.", "url": "https://example.com/intro-to-sales"},
+                {"name": "Sales Communication", "description": "Effective communication strategies for sales.", "url": "https://example.com/sales-communication"},
+            ])
+
+    if category == 'hr_manager':
+        if score >= 7:
+            suggested_courses.extend([
+                {"name": "Advanced Human Resources Management", "description": "Advanced HR management practices.", "url": "https://example.com/advanced-hr-management"},
+                {"name": "Organizational Behavior", "description": "Study of behavior within organizations.", "url": "https://example.com/organizational-behavior"},
+            ])
+        elif score >= 5:
+            suggested_courses.extend([
+                {"name": "Talent Management", "description": "Strategies for managing and retaining talent.", "url": "https://example.com/talent-management"},
+                {"name": "Employee Relations", "description": "Managing employee relations and workplace conflict.", "url": "https://example.com/employee-relations"},
+            ])
+        elif score >= 3:
+            suggested_courses.extend([
+                {"name": "Introduction to HR Management", "description": "Basics of human resources management.", "url": "https://example.com/intro-to-hr-management"},
+                {"name": "Recruitment and Selection", "description": "Principles of recruitment and selection processes.", "url": "https://example.com/recruitment-selection"},
+            ])
+        elif score >= 1:
+            suggested_courses.extend([
+                {"name": "HR Fundamentals", "description": "Basic principles of human resources.", "url": "https://example.com/hr-fundamentals"},
+                {"name": "Employee Onboarding", "description": "Introduction to onboarding new employees.", "url": "https://example.com/employee-onboarding"},
+            ])
+
+    if category == 'marketing_manager':
+        if score >= 7:
+            suggested_courses.extend([
+                {"name": "Advanced Marketing Strategy", "description": "Advanced techniques in marketing strategy development.", "url": "https://example.com/advanced-marketing-strategy"},
+                {"name": "Digital Marketing Mastery", "description": "Mastering digital marketing channels and techniques.", "url": "https://example.com/digital-marketing-mastery"},
+            ])
+        elif score >= 5:
+            suggested_courses.extend([
+                {"name": "Brand Management", "description": "Managing and growing brand equity.", "url": "https://example.com/brand-management"},
+                {"name": "Market Research and Analysis", "description": "Techniques for conducting market research and analysis.", "url": "https://example.com/market-research-analysis"},
+            ])
+        elif score >= 3:
+            suggested_courses.extend([
+                {"name": "Marketing Fundamentals", "description": "Introduction to marketing principles and practices.", "url": "https://example.com/marketing-fundamentals"},
+                {"name": "Social Media Marketing", "description": "Leveraging social media for marketing.", "url": "https://example.com/social-media-marketing"},
+            ])
+        elif score >= 1:
+            suggested_courses.extend([
+                {"name": "Introduction to Marketing", "description": "Basic principles of marketing and advertising.", "url": "https://example.com/intro-to-marketing"},
+                {"name": "Content Marketing Basics", "description": "Fundamentals of content marketing strategies.", "url": "https://example.com/content-marketing-basics"},
+            ])
+
+    if category == 'ifs_officer':
+        if score >= 7:
+            suggested_courses.extend([
+                {"name": "Advanced Diplomacy", "description": "In-depth study of diplomatic practices and strategies.", "url": "https://example.com/advanced-diplomacy"},
+                {"name": "International Relations", "description": "Comprehensive study of global international relations.", "url": "https://example.com/international-relations"},
+            ])
+        elif score >= 5:
+            suggested_courses.extend([
+                {"name": "Foreign Policy Analysis", "description": "Analysis of global foreign policy trends and strategies.", "url": "https://example.com/foreign-policy-analysis"},
+                {"name": "Global Governance", "description": "Study of international governance structures and policies.", "url": "https://example.com/global-governance"},
+            ])
+        elif score >= 3:
+            suggested_courses.extend([
+                {"name": "Introduction to Diplomacy", "description": "Fundamentals of diplomatic practices and international relations.", "url": "https://example.com/intro-to-diplomacy"},
+                {"name": "Public Administration", "description": "Principles and practices of public administration.", "url": "https://example.com/public-administration"},
+            ])
+        elif score >= 1:
+            suggested_courses.extend([
+                {"name": "Basics of International Relations", "description": "Introduction to international relations and diplomacy.", "url": "https://example.com/basics-of-international-relations"},
+                {"name": "Ethics in Public Service", "description": "Study of ethics in public service roles.", "url": "https://example.com/ethics-in-public-service"},
+            ])
+
+    if category == 'ips_officer':
+        if score >= 7:
+            suggested_courses.extend([
+                {"name": "Advanced Police Administration", "description": "Advanced practices in police administration and leadership.", "url": "https://example.com/advanced-police-administration"},
+                {"name": "Counterterrorism Strategies", "description": "Study of counterterrorism strategies and techniques.", "url": "https://example.com/counterterrorism-strategies"},
+            ])
+        elif score >= 5:
+            suggested_courses.extend([
+                {"name": "Law Enforcement Leadership", "description": "Leadership practices in law enforcement.", "url": "https://example.com/law-enforcement-leadership"},
+                {"name": "Criminal Investigation Techniques", "description": "Techniques in criminal investigation and case management.", "url": "https://example.com/criminal-investigation-techniques"},
+            ])
+        elif score >= 3:
+            suggested_courses.extend([
+                {"name": "Police Ethics", "description": "Study of ethics and integrity in law enforcement.", "url": "https://example.com/police-ethics"},
+                {"name": "Introduction to Criminal Justice", "description": "Basic principles of the criminal justice system.", "url": "https://example.com/intro-to-criminal-justice"},
+            ])
+        elif score >= 1:
+            suggested_courses.extend([
+                {"name": "Basics of Law Enforcement", "description": "Introduction to basic law enforcement practices.", "url": "https://example.com/basics-of-law-enforcement"},
+                {"name": "Community Policing", "description": "Principles of community policing and public safety.", "url": "https://example.com/community-policing"},
+            ])
+
+    if category == 'ias_officer':
+        if score >= 7:
+            suggested_courses.extend([
+                {"name": "Advanced Public Administration", "description": "Advanced techniques in public administration and governance.", "url": "https://example.com/advanced-public-administration"},
+                {"name": "Policy Analysis and Implementation", "description": "Strategies for policy analysis and implementation.", "url": "https://example.com/policy-analysis-implementation"},
+            ])
+        elif score >= 5:
+            suggested_courses.extend([
+                {"name": "Governance and Development", "description": "Study of governance practices in developmental policies.", "url": "https://example.com/governance-and-development"},
+                {"name": "Public Policy and Governance", "description": "Introduction to public policy formulation and governance.", "url": "https://example.com/public-policy-governance"},
+            ])
+        elif score >= 3:
+            suggested_courses.extend([
+                {"name": "Introduction to Public Administration", "description": "Basics of public administration and governance.", "url": "https://example.com/intro-to-public-administration"},
+                {"name": "Ethics in Governance", "description": "Study of ethical practices in governance.", "url": "https://example.com/ethics-in-governance"},
+            ])
+        elif score >= 1:
+            suggested_courses.extend([
+                {"name": "Introduction to Indian Administration", "description": "Basic principles of Indian administrative practices.", "url": "https://example.com/intro-to-indian-administration"},
+                {"name": "Public Service Ethics", "description": "Study of ethics in public service roles.", "url": "https://example.com/public-service-ethics"},
+            ])
+
+    if category == 'communication':
+        if score >= 7:
+            suggested_courses.extend([
+                {"name": "Advanced Communication Strategies", "description": "Advanced techniques in effective communication.", "url": "https://example.com/advanced-communication-strategies"},
+                {"name": "Crisis Communication Management", "description": "Managing communication during crises.", "url": "https://example.com/crisis-communication-management"},
+            ])
+        elif score >= 5:
+            suggested_courses.extend([
+                {"name": "Strategic Communication", "description": "Developing strategic communication plans.", "url": "https://example.com/strategic-communication"},
+                {"name": "Media Communication", "description": "Effective communication strategies for media.", "url": "https://example.com/media-communication"},
+            ])
+        elif score >= 3:
+            suggested_courses.extend([
+                {"name": "Communication Skills for Professionals", "description": "Basic communication skills for professional settings.", "url": "https://example.com/communication-skills-for-professionals"},
+                {"name": "Presentation Skills", "description": "Improving presentation and public speaking skills.", "url": "https://example.com/presentation-skills"},
+            ])
+        elif score >= 1:
+            suggested_courses.extend([
+                {"name": "Introduction to Communication", "description": "Basic principles of effective communication.", "url": "https://example.com/intro-to-communication"},
+                {"name": "Writing for Professional Communication", "description": "Effective writing skills for professional communication.", "url": "https://example.com/writing-for-professional-communication"},
+            ])
+
+    if category == 'critical_thinking':
+        if score >= 7:
+            suggested_courses.extend([
+                {"name": "Advanced Critical Thinking", "description": "Advanced techniques in critical thinking and problem-solving.", "url": "https://example.com/advanced-critical-thinking"},
+                {"name": "Strategic Problem Solving", "description": "Developing strategic approaches to problem-solving.", "url": "https://example.com/strategic-problem-solving"},
+            ])
+        elif score >= 5:
+            suggested_courses.extend([
+                {"name": "Analytical Thinking", "description": "Improving analytical thinking skills.", "url": "https://example.com/analytical-thinking"},
+                {"name": "Decision Making Techniques", "description": "Study of effective decision-making techniques.", "url": "https://example.com/decision-making-techniques"},
+            ])
+        elif score >= 3:
+            suggested_courses.extend([
+                {"name": "Critical Thinking Basics", "description": "Introduction to basic critical thinking skills.", "url": "https://example.com/critical-thinking-basics"},
+                {"name": "Problem Solving Fundamentals", "description": "Fundamentals of problem-solving techniques.", "url": "https://example.com/problem-solving-fundamentals"},
+            ])
+        elif score >= 1:
+            suggested_courses.extend([
+                {"name": "Introduction to Critical Thinking", "description": "Basic principles of critical thinking and reasoning.", "url": "https://example.com/intro-to-critical-thinking"},
+                {"name": "Logic and Reasoning", "description": "Study of logic and reasoning principles.", "url": "https://example.com/logic-and-reasoning"},
+            ])
+
+    if category == 'emotional_intelligence':
+        if score >= 7:
+            suggested_courses.extend([
+                {"name": "Advanced Emotional Intelligence", "description": "Advanced techniques in emotional intelligence.", "url": "https://example.com/advanced-emotional-intelligence"},
+                {"name": "Leadership and Emotional Intelligence", "description": "Connecting emotional intelligence with leadership practices.", "url": "https://example.com/leadership-and-emotional-intelligence"},
+            ])
+        elif score >= 5:
+            suggested_courses.extend([
+                {"name": "Emotional Intelligence in the Workplace", "description": "Applying emotional intelligence in professional settings.", "url": "https://example.com/emotional-intelligence-in-workplace"},
+                {"name": "Emotional Regulation", "description": "Techniques for emotional regulation and stress management.", "url": "https://example.com/emotional-regulation"},
+            ])
+        elif score >= 3:
+            suggested_courses.extend([
+                {"name": "Introduction to Emotional Intelligence", "description": "Basics of emotional intelligence and self-awareness.", "url": "https://example.com/intro-to-emotional-intelligence"},
+                {"name": "Interpersonal Skills", "description": "Improving interpersonal communication and relationships.", "url": "https://example.com/interpersonal-skills"},
+            ])
+        elif score >= 1:
+            suggested_courses.extend([
+                {"name": "Emotional Awareness", "description": "Understanding and improving emotional awareness.", "url": "https://example.com/emotional-awareness"},
+                {"name": "Stress Management Basics", "description": "Basic techniques for managing stress effectively.", "url": "https://example.com/stress-management-basics"},
+            ])
+
 
 
     return suggested_courses

@@ -1,0 +1,5 @@
+<h2>Quiz Results</h2>
+
+{% for category, score in scores.items %}
+    <p>{{ category|title }} Score: {{ score }}/10</p>
+{% endfor %}

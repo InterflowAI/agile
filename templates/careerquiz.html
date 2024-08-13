@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1a1a1d;
+            color: #e0e0e0;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        .header {
+    background: #1a1a1d;
+    color: #e0e0e0;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #d4af37;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100% - 40px); /* Adjust width to match form container */
+    z-index: 1000;
+    margin: 0 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+    height: auto; /* Allow height to adjust based on content */
+}
+
+.header img {
+    max-width: 100px;
+    height: auto;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header h1 {
+    color: #d4af37;
+    font-size: 2.5em;
+    margin: 0;
+    font-weight: 600;
+    font-family: 'Raleway', sans-serif;
+}
+
+.header p {
+    color: #e0e0e0;
+    font-size: 1em;
+    margin: 10px 0 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        @keyframes moveEmoji {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-50vh) rotate(180deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+
+        .background::after {
+            content: "🚀";
+            position: absolute;
+            top: -10vh;
+            left: calc(10% + 10vw);
+            font-size: 5rem;
+            opacity: 0.6;
+            animation: moveEmoji 12s linear infinite;
+        }
+
+        .background::before {
+            content: "🤖";
+            position: absolute;
+            top: -20vh;
+            left: calc(70% + 5vw);
+            font-size: 4rem;
+            opacity: 0.5;
+            animation: moveEmoji 10s linear infinite;
+        }
+
+/* Dropdown container */
+.dropdown {
+    position: fixed;
+    top: 80px; /* Adjust based on header height */
+    background-color: #1a1a1d;
+    width: calc(100% - 40px); /* Adjust for gap from container edges */
+    left: 20px;
+    right: 20px;
+    z-index: 999;
+    border-bottom: 2px solid #d4af37;
+    margin-top: 120px; /* Gap between header and dropdown */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(184, 134, 11, 0.5);
+    backdrop-filter: blur(8px);
+    padding: 10px;
+}
+
+/* Styling the select element */
+.dropdown select {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #d4af37;
+    border-radius: 8px;
+    background: #1a1a1d;
+    color: #e0e0e0;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    appearance: none; /* Removes default arrow */
+    -webkit-appearance: none; /* Safari */
+    -moz-appearance: none; /* Firefox */
+    position: relative; /* For custom arrow */
+}
+
+/* Removes default arrow in Internet Explorer and Edge */
+.dropdown select::-ms-expand {
+    display: none;
+}
+
+/* Custom arrow */
+.dropdown::after {
+    content: '';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #e0e0e0 transparent transparent transparent;
+    pointer-events: none;
+}
+
+/* Hover and focus styles */
+.dropdown select:hover,
+.dropdown select:focus {
+    background: #b8860b; /* Gold color on hover/focus */
+    color: #1a1a1d;
+    box-shadow: 0 4px 8px rgba(184, 134, 11, 0.5);
+}
+
+/* Add padding and styling for options */
+.dropdown option {
+    background: #1a1a1d;
+    color: #e0e0e0;
+    padding: 15px; /* Add padding for space */
+    font-size: 1.1em;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Custom hover styling */
+.dropdown option:hover {
+    background: #d4af37; /* Gold color on hover */
+    color: #1a1a1d;
+    transform: scale(1.02); /* Slight scale effect */
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+
+/* Optional: Add a custom background color for selected option if visible */
+.dropdown select option:checked {
+    background: #d4af37; /* Gold color when selected */
+    color: #1a1a1d;
+}
+
+
+
+     
+
+        .form-container {
+            background: linear-gradient(135deg, rgba(45, 45, 45, 0.8), rgba(10, 10, 10, 0.8));
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(184, 134, 11, 0.5);
+            width: calc(100% - 40px); /* Adjust for gap from container edges */
+            max-width: none;
+            margin: 290px auto 100px; /* Adjust top margin for gap between dropdown and form container */
+            backdrop-filter: blur(15px);
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            
+        }
+
+        h2{
+            color: #d4af37;
+           
+            margin-top: 0;
+            font-weight: 600; /* Updated font weight */
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-family: 'Raleway', sans-serif;
+        }
+         h3 {
+            color: #00bcd4;
+           
+            margin-top: 0;
+            font-weight: 600; /* Updated font weight */
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+       .option {
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    color: #e0e0e0;
+    outline: none;
+}
+
+.option:hover {
+    background-color: rgba(0, 188, 212, 0.1);
+    transform: scale(1.02);
+}
+
+.option.selected {
+    background-color: #00bcd4;
+    color: #fff;
+    border: 2px solid #00bcd4;
+}
+
+.option.selected::before {
+    content: "✓";
+    position: absolute;
+    left: -30px; /* Position the tick mark outside the option box */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+
+        button {
+            background: #d4af37;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            cursor: pointer;
+            border-radius: 10px;
+            font-size: 1.2em;
+            box-shadow: 0 0 15px rgba(0, 188, 212, 0.6);
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background:#b8860b;
+            transform: scale(1.05);
+        }
+
+        button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="{% static 'logo-sp.png' %}" alt="Website Logo"> <!-- Add your logo here -->
+        <div class="header-content">
+            <h1>Career Quiz</h1>
+            <p>Select your Domain from the given option!</p>
+        </div>
+    </header>
+
+    <div class="background"></div>
+
+    <div class="dropdown">
+        <select id="sectionSelect" onchange="scrollToSection(this.value)">
+            <option value="">Select a section</option>
+            {% for category, questions in questions.items %}
+                <option value="{{ category }}">{{ category|title }} Questions</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-container">
+        <form method="post" action="{% url 'careerquiz' %}">
+            {% csrf_token %}
+            <h2>Career Quiz</h2>
+
+            {% for category, questions in questions.items %}
+                <h3>{{ category|title }} Questions</h3>
+                <div id="{{ category }}" class="section">
+                    {% for question in questions %}
+                        <p>{{ question.question }}</p>
+                        {% for option in question.options %}
+                            <div class="option" onclick="selectOption(this)" data-question="{{ forloop.parentloop.counter0 }}">
+                                <input type="radio" id="{{ category }}_{{ forloop.parentloop.counter0 }}_{{ forloop.counter0 }}" name="{{ category }}_{{ forloop.parentloop.counter0 }}" value="{{ option }}">
+                                <label for="{{ category }}_{{ forloop.parentloop.counter0 }}_{{ forloop.counter0 }}">{{ option }}</label><br>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function selectOption(option) {
+        const questionIndex = option.dataset.question;
+        const questionSection = option.closest('.section');
+        const options = questionSection.querySelectorAll(`.option[data-question="${questionIndex}"]`);
+
+        // Uncheck all radio inputs in the same question section
+        options.forEach(opt => {
+            opt.classList.remove('selected');
+            const input = opt.querySelector('input[type="radio"]');
+            if (input) {
+                input.checked = false;
+            }
+        });
+
+        // Select and check the clicked option
+        option.classList.add('selected');
+        const selectedInput = option.querySelector('input[type="radio"]');
+        if (selectedInput) {
+            selectedInput.checked = true;
+        }
+
+        // Optionally scroll to the section if needed
+        // (Uncomment if you want to scroll to the section where the option was selected)
+        // scrollToSection(questionSection.id);
+    }
+
+        function scrollToSection(sectionId) {
+            if (sectionId) {
+                const section = document.getElementById(sectionId);
+                const offset = document.querySelector('.dropdown').offsetHeight + 20; // Adjust offset based on dropdown height and margin
+                window.scrollTo({
+                    top: section.offsetTop - offset,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                const selected = document.querySelector('.selected');
+                if (selected) {
+                    selected.click();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

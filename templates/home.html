@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    {% load static %}
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #000; /* Black background color for the entire page */
+            color: #fff;
+            overflow: hidden; /* Prevent scrollbars */
+        }
+        .container {
+            padding: 30px;
+            background: linear-gradient(135deg, #000 ,#333 ); /* Black gradient for the container */
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Center the container */
+            width: 90vw;
+            height: 80vh;
+            max-width: 1200px; /* Maximum width to prevent overflow */
+            max-height: 700px; /* Maximum height to prevent overflow */
+        }
+        .nav-bar {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            z-index: 1;
+        }
+        .nav-bar a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .nav-bar a:hover {
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(1.1);
+        }
+        .header {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            display: flex;
+            align-items: center;
+            z-index: 1;
+            cursor: pointer; /* Add cursor pointer for clickable effect */
+        }
+        .logo img {
+            width: 110px; /* Adjust the size of the logo */
+        }
+        .sample {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+        .sample img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+        .sample img:hover {
+            transform: scale(1.05);
+        }
+        .content {
+            flex: 2;
+            color: #fff;
+        }
+        .content h2 {
+            font-size: 32px;
+            color: #f0f0f0;
+            margin-bottom: 10px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .content h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 4px;
+            background: #da70d6;
+            border-radius: 5px;
+        }
+        .content p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .content .btn {
+            display: inline-block;
+            padding: 15px 25px;
+            background: #4b0082;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .content .btn:hover {
+            background: #6a0dad;
+            transform: scale(1.05);
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 20px;
+                width: 95vw;
+                height: 90vh;
+                max-width: none;
+                max-height: none;
+                top: 10%;
+                left: 0;
+                transform: none;
+            }
+            .nav-bar {
+                top: 10px;
+                left: 0;
+                transform: none;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .sample {
+                margin: 0;
+                margin-bottom: 20px;
+                width: 100%;
+            }
+            .content {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header" onclick="window.location.reload();"> <!-- Added onclick event to reload page -->
+            <div class="logo">
+                <!-- Replace the src with your logo image URL -->
+                <img src="{% static 'logo-sp.png' %}" alt="Logo">
+            </div>
+        </div>
+        <div class="nav-bar">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="sample">
+            <!-- Example slideshow with dummy images -->
+            <img src="{% static 'home.jpeg' %}" alt="sample image">
+        </div>
+        <div class="content">
+            <h2>Get Ready to Discover Yourself!</h2>
+            <p>Are you curious about what makes you tick? Dive into our fun and insightful personality test to uncover your unique traits and find out more about yourself. It's quick, easy, and will give you fascinating insights into your personality!</p>
+            <a href="{% url 'index' %}" class="btn">Take the Test</a>
+        </div>
+    </div>
+</body>
+</html>

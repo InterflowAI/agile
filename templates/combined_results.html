@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Results</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Fonts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script> <!-- jsPDF library -->
+</head>
+{% load static %}
+<style>
+    body {
+        background-color: #1a1a1d; /* Dark background */
+        color: #e0e0e0; /* Soft light grey text */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Professional and modern font */
+        margin: 0;
+        padding: 20px;
+        line-height: 1.6;
+    }
+
+    header {
+    background-color: #2b2b2d; /* Dark background for the header */
+    padding: 30px 0; /* Vertical padding for the header */
+    border-radius: 10px; /* Rounded corners for the header */
+    text-align: center; /* Center align the header */
+    margin-bottom: 40px; /* Space below the header */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Deep shadow for a 3D effect */
+    position: relative; /* Position relative for decorative elements */
+}
+
+header::before {
+    content: ''; /* Decorative element */
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 5px;
+    background: linear-gradient(90deg, #FFD700, #FF4500); /* Gradient bar above header */
+    border-radius: 50px; /* Rounded ends */
+}
+
+h1 {
+    color: #FFD700; /* Gold color for main heading */
+    font-size: 3em; /* Larger font size for emphasis */
+    font-weight: 700; /* Bold font */
+    display: flex;
+    justify-content: center; /* Center the heading and image */
+    align-items: center; /* Center align text and image vertically */
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.7); /* Text shadow for depth */
+    margin: 0; /* Remove default margin */
+    letter-spacing: 2px; /* Spacing between letters */
+}
+
+h1 img {
+    margin-right: 20px; /* Space between image and text */
+    max-width: 80px; /* Increase image size */
+    border-radius: 10%;
+    border: 3px solid #FFD700; /* Gold border around the image */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.7); /* Shadow for the image */
+}
+
+
+
+.profile-img {
+    display: block;
+    margin: 0 auto 25px;
+    border-radius: 50%; /* Profile image remains round */
+    max-width: 180px;
+    border: 4px solid #FFD700;
+}
+
+
+     h2 img {
+        margin-right: 15px; /* Slightly larger space between image and text */
+        max-width: 60px; /* Increase image size for emphasis */
+        border-radius: 50%; /* Make image round */
+    }
+
+    section {
+        margin-bottom: 40px; /* Increase spacing between sections for clarity */
+    }
+
+    h2 {
+        color: #FFD700; /* Gold color for subheadings */
+        display: flex;
+        align-items: center; /* Center align text and image vertically */
+        font-size: 1.8em; /* Larger font size for subheadings */
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 10px; /* Increase spacing between list items */
+        font-size: 1.1em;
+    }
+
+    a {
+        color: #66fcf1; /* Keep links in a contrasting color */
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    p {
+        margin-bottom: 15px;
+        font-size: 1.1em; /* Slightly increase font size for readability */
+    }
+    .courses-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between cards */
+}
+
+.course-card {
+    background: #2d2d2d; /* Dark background for cards */
+    border-radius: 15px; /* Rounded corners */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+    max-width: 300px; /* Set a max width for cards */
+    text-align: center;
+}
+
+.course-card:hover {
+    transform: translateY(-10px); /* Lift the card on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Deeper shadow on hover */
+}
+
+.course-title {
+    color: #FFD700; /* Gold color for the title */
+    font-size: 1.5em; /* Larger font size */
+    margin-bottom: 10px;
+    font-weight: 700; /* Bold font weight */
+}
+
+.course-description {
+    color: #e0e0e0; /* Light text color for description */
+    font-size: 1.1em; /* Slightly larger text */
+    margin-bottom: 15px;
+}
+
+.course-link {
+    color: #66fcf1; /* Link color */
+    text-decoration: none;
+    font-weight: 500;
+    background: #1a1a1d; /* Button background color */
+    padding: 10px 20px;
+    border-radius: 5px; /* Rounded corners for the button */
+    border: 2px solid #66fcf1; /* Border color */
+    display: inline-block; /* Make the link behave like a button */
+    transition: background 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.course-link:hover {
+    background: #66fcf1; /* Change background on hover */
+    color: #1a1a1d; /* Change text color on hover */
+}
+
+.jobs-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px; /* Space between cards */
+    padding: 0;
+    margin: 0;
+}
+
+.job-card {
+    background: linear-gradient(145deg, #1b1b1e, #2d2d2d); /* Gradient background for a sleek look */
+    border-radius: 10px; /* Slightly rounded corners */
+    padding: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+    position: relative; /* For pseudo-element positioning */
+    overflow: hidden;
+    text-align: center;
+}
+
+.job-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: #FFD700; /* Gold accent at the top */
+    border-bottom: 1px solid #fff;
+}
+
+.job-card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6); /* Deep shadow on hover */
+}
+
+.job-title {
+    color: #66fcf1; /* Bright color for title */
+    font-size: 1.6em; /* Larger font size for emphasis */
+    margin-bottom: 10px;
+    font-weight: 700; /* Bold font weight */
+}
+
+.job-description {
+    color: #d1d1d1; /* Lighter grey text for description */
+    font-size: 1em; /* Standard font size */
+    margin-bottom: 15px;
+}
+
+.job-info {
+    background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1d 100%); /* Gradient background for added depth */
+    border-radius: 12px; /* More pronounced rounded corners */
+    padding: 30px;
+    margin-bottom: 40px; /* Space between sections */
+    border: 1px solid #333; /* Subtle border for definition */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7); /* Enhanced shadow for more depth */
+}
+
+.job-info h2 {
+    color: #FFD700; /* Gold color for headings */
+    font-size: 2em; /* Larger font size for prominence */
+    font-weight: 700; /* Bold weight */
+    margin-bottom: 20px; /* Space below heading */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Shadow for text clarity */
+    position: relative; /* Positioning for additional effects */
+}
+
+.job-info h2 img {
+    vertical-align: middle; /* Align icon with text */
+    margin-right: 15px;
+    max-width: 60px; /* Size of the icon */
+}
+
+.job-info-card {
+    background: #1a1a1d; /* Dark theme for the card */
+    border-radius: 12px; /* Matching rounded corners */
+    padding: 25px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6); /* Enhanced shadow for depth */
+    border-left: 5px solid #FFD700; /* Gold accent on the left */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+}
+
+.job-info-card:hover {
+    transform: scale(1.02); /* Slight zoom effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* Increased shadow on hover */
+}
+
+.job-info-description {
+    color: #e0e0e0; /* Soft light grey text */
+    font-size: 1.2em; /* Slightly larger font for readability */
+    margin-bottom: 20px; /* Space below description */
+    line-height: 1.6; /* Improved line spacing */
+}
+
+.salary-range {
+    color: #66fcf1; /* Bright teal color for salary information */
+    font-size: 1.4em; /* Larger font size for emphasis */
+    font-weight: 700; /* Bold weight for the salary range */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Light shadow for readability */
+}
+
+#download-pdf {
+    background: linear-gradient(45deg, #FFD700, #FF6347); /* Gradient background from gold to tomato */
+    color: #fff; /* White text for contrast */
+    border: none; /* Remove default border */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    padding: 15px 30px; /* Adequate padding for a comfortable click area */
+    font-size: 1.2em; /* Larger font size for better visibility */
+    font-weight: 700; /* Bold text for emphasis */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for effects */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
+
+#download-pdf:hover {
+    background: linear-gradient(45deg, #FF6347, #FFD700); /* Reverse gradient on hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Increase shadow on hover */
+}
+
+#download-pdf:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.5); /* Pink outline for focus */
+}
+
+#download-pdf:active {
+    background: linear-gradient(45deg, #FF4500, #FFD700); /* Darker gradient when button is pressed */
+    transform: scale(0.98); /* Slightly shrink button when pressed */
+}
+.personality {
+    background: linear-gradient(135deg, rgba(255, 223, 0, 0.2), rgba(255, 69, 0, 0.2)); /* Soft gradient background */
+    border: 2px solid #FFD700; /* Gold border for emphasis */
+    border-radius: 12px; /* Rounded corners for a polished look */
+    padding: 20px; /* Adequate padding for spacing */
+    margin-bottom: 40px; /* Space below the section */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    text-align: center; /* Center align text */
+}
+
+.personality h2 {
+    background: linear-gradient(90deg, #FFD700, #FF6347); /* Gradient background for the heading */
+    color: #fff; /* White text for contrast */
+    padding: 10px; /* Padding around the text */
+    border-radius: 8px; /* Rounded corners for the heading background */
+    font-size: 1.8em; /* Larger font size for emphasis */
+    font-weight: 700; /* Bold text for heading */
+    display: flex;
+    align-items: center; /* Center icon and text vertically */
+    justify-content: center; /* Center align text and icon */
+    margin: 0; /* Remove default margin */
+}
+
+.personality h2 img {
+    margin-right: 15px; /* Space between icon and text */
+    max-width: 60px; /* Icon size */
+    border-radius: 50%; /* Round icon */
+}
+
+.personality p {
+    color: #e0e0e0; /* Light text color for description */
+    font-size: 1.2em; /* Slightly larger font size */
+    margin-top: 15px; /* Space above the paragraph */
+}
+
+
+
+    
+</style>
+
+<body>
+    <header>
+        <h1><img src="{% static 'logo-sp.png' %}" alt="Header Image"> Combined Results</h1>
+    </header>
+    
+
+    <section class="profile">
+        <img src="{% static 'profile.webp' %}" alt="Profile Picture" class="profile-img">
+    </section>
+    
+    <section class="personality">
+        <h2><img src="{% static 'p_logo.jpg' %}" alt="Personality Icon"> Your Personality Type: {{ personality_type.code }}</h2>
+        <p>Description: {{ description | linebreaks }}</p>
+    </section>
+    
+    
+    
+    <section class="career">
+        <h2><img src="{% static 'c_logo.jpg' %}" alt="Career Icon"> Career Quiz Results:</h2>
+        <div class="chart-container">
+            <canvas id="careerChart"></canvas>
+        </div>
+    </section>
+    
+    <section class="jobs">
+        <h2><img src="{% static 'j_logo.jpeg' %}" alt="Jobs Icon"> Suggested Careers Based on Highest Score Category ({{ highest_score_category }}):</h2>
+        <div class="jobs-container">
+            {% for job in suggested_jobs %}
+                <div class="job-card">
+                    <h3 class="job-title">{{ job }}</h3>
+                    <p class="job-description">✨ A great fit for those who are passionate about {{ highest_score_category }}. Dive into this role and unleash your potential!</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    
+    
+    
+    
+    <section class="courses">
+        <h2><img src="{% static 'career_l.jpg' %}" alt="Courses Icon"> Recommended Courses:</h2>
+        <div class="courses-container">
+            {% for course in suggested_courses %}
+                <div class="course-card">
+                    <h3 class="course-title">{{ course.name }}</h3>
+                    <p class="course-description">{{ course.description }}</p>
+                    <a href="{{ course.url }}" class="course-link">Learn more</a>
+                </div>
+            {% empty %}
+                <p>No recommended courses available.</p>
+            {% endfor %}
+        </div>
+    </section>
+    
+    
+    <section class="job-info">
+        <h2><img src="{% static 'salary.jpeg' %}" alt="Job Info Icon"> Job Information for {{ suggested_jobs.0 }}:</h2>
+        <div class="job-info-card">
+            <p class="job-info-description">{{ job_info.description }}</p>
+            <p class="salary-range"><strong>Salary Range:</strong> {{ job_info.salary }}</p>
+        </div>
+    </section>
+    
+    
+
+    <!-- Download PDF Button -->
+   <!-- Download PDF Button -->
+<button id="download-pdf">Download PDF</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var ctx = document.getElementById('careerChart').getContext('2d');
+    
+            // Create a gradient for the bar fill
+            var gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(255, 215, 0, 0.8)'); // Gold at the top
+            gradient.addColorStop(1, 'rgba(102, 252, 241, 0.8)'); // Teal at the bottom
+    
+            // Determine the index of the highest score
+            var scores = [{% for category, score in career_scores.items %}{{ score }},{% endfor %}];
+            var maxScore = Math.max(...scores);
+            var maxIndex = scores.indexOf(maxScore);
+    
+            var careerChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [{% for category, score in career_scores.items %}'{{ category }}',{% endfor %}],
+                    datasets: [{
+                        label: 'Career Quiz Results',
+                        data: scores,
+                        backgroundColor: function(context) {
+                            var index = context.dataIndex;
+                            return index === maxIndex ? 'rgba(255, 69, 0, 0.8)' : gradient; // Highlight max bar in red
+                        },
+                        borderColor: '#1a1a1d',
+                        borderWidth: 2,
+                        borderRadius: 20, // Larger rounded corners for the bars
+                        borderSkipped: false, // No border skipping for rounded corners
+                        hoverBackgroundColor: function(context) {
+                            var index = context.dataIndex;
+                            return index === maxIndex ? 'rgba(255, 99, 71, 1)' : 'rgba(255, 215, 0, 1)'; // Highlight max bar on hover
+                        },
+                        hoverBorderColor: '#66fcf1',
+                        hoverBorderWidth: 3, // Thicker border on hover
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: '#2f2f2f',
+                                borderDash: [5, 5], // Dashed grid lines for a modern look
+                            },
+                            ticks: {
+                                color: '#c5c6c7',
+                                font: {
+                                    family: 'Montserrat',
+                                    size: 14,
+                                    weight: 'bold' // Bold text for the ticks
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: 'transparent', // No grid lines for the x-axis
+                            },
+                            ticks: {
+                                color: function(context) {
+                                    var index = context.index;
+                                    return index === maxIndex ? '#FFD700' : '#c5c6c7'; // Highlight max label in gold
+                                },
+                                font: {
+                                    family: 'Montserrat',
+                                    size: 14,
+                                    weight: function(context) {
+                                        return context.index === maxIndex ? 'bold' : 'normal'; // Bold font for max label
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false, // Hide legend to reduce clutter
+                        },
+                        tooltip: {
+                            backgroundColor: '#2f2f2f',
+                            titleColor: '#FFD700',
+                            bodyColor: '#c5c6c7',
+                            titleFont: {
+                                family: 'Raleway',
+                                size: 16,
+                                weight: 'bold' // Bold title in the tooltip
+                            },
+                            bodyFont: {
+                                family: 'Montserrat',
+                                size: 14,
+                            },
+                            borderColor: '#FFD700',
+                            borderWidth: 1,
+                            caretPadding: 10,
+                            cornerRadius: 10, // Rounded corners for the tooltip
+                        }
+                    },
+                    animation: {
+                        duration: 1500, // Slow down the animation for effect
+                        easing: 'easeInOutQuad' // Smooth animation
+                    }
+                }
+            });
+    
+            // Download PDF functionality
+            const downloadBtn = document.getElementById('download-pdf');
+    
+            downloadBtn.addEventListener('click', function() {
+                const pdf = new jsPDF();
+                const container = document.body;
+    
+                // Generate PDF from HTML
+                pdf.html(container, {
+                    callback: function (pdf) {
+                        pdf.save('combined_results.pdf');
+                    },
+                    x: 10,
+                    y: 10
+                });
+            });
+        });
+    </script>
+    
+    
+    
+</body>
+</html>

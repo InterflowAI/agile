@@ -407,106 +407,28 @@ h1 img {
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var ctx = document.getElementById('careerChart').getContext('2d');
-
-        // Create a gradient for the bar fill
-        var gradient = ctx.createLinearGradient(0, 0, 0, 400);
-        gradient.addColorStop(0, 'rgba(255, 215, 0, 0.8)'); // Gold at the top
-        gradient.addColorStop(1, 'rgba(102, 252, 241, 0.8)'); // Teal at the bottom
-
-        // Example scores for debugging
-        var scores = [10, 20, 30, 40]; // Replace with your actual data
-        var maxScore = Math.max(...scores);
-        var maxIndex = scores.indexOf(maxScore);
-
         var careerChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4'], // Replace with your actual labels
+                labels: [{% for category, score in career_scores.items %}'{{ category }}',{% endfor %}],
                 datasets: [{
                     label: 'Career Quiz Results',
-                    data: scores,
-                    backgroundColor: function(context) {
-                        var index = context.dataIndex;
-                        return index === maxIndex ? 'rgba(255, 69, 0, 0.8)' : gradient; // Highlight max bar in red
-                    },
-                    borderColor: '#1a1a1d',
-                    borderWidth: 2,
-                    borderRadius: 20, // Larger rounded corners for the bars
-                    borderSkipped: false, // No border skipping for rounded corners
-                    hoverBackgroundColor: function(context) {
-                        var index = context.dataIndex;
-                        return index === maxIndex ? 'rgba(255, 99, 71, 1)' : 'rgba(255, 215, 0, 1)'; // Highlight max bar on hover
-                    },
-                    hoverBorderColor: '#66fcf1',
-                    hoverBorderWidth: 3, // Thicker border on hover
+                    data: [{% for category, score in career_scores.items %}{{ score }},{% endfor %}],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
                 }]
             },
             options: {
                 scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            color: '#2f2f2f',
-                            borderDash: [5, 5], // Dashed grid lines for a modern look
-                        },
+                    yAxes: [{
                         ticks: {
-                            color: '#c5c6c7',
-                            font: {
-                                family: 'Montserrat',
-                                size: 14,
-                                weight: 'bold' // Bold text for the ticks
-                            }
+                            beginAtZero: true
                         }
-                    },
-                    x: {
-                        grid: {
-                            color: 'transparent', // No grid lines for the x-axis
-                        },
-                        ticks: {
-                            color: function(context) {
-                                var index = context.index;
-                                return index === maxIndex ? '#FFD700' : '#c5c6c7'; // Highlight max label in gold
-                            },
-                            font: {
-                                family: 'Montserrat',
-                                size: 14,
-                                weight: function(context) {
-                                    return context.index === maxIndex ? 'bold' : 'normal'; // Bold font for max label
-                                }
-                            }
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false, // Hide legend to reduce clutter
-                    },
-                    tooltip: {
-                        backgroundColor: '#2f2f2f',
-                        titleColor: '#FFD700',
-                        bodyColor: '#c5c6c7',
-                        titleFont: {
-                            family: 'Raleway',
-                            size: 16,
-                            weight: 'bold' // Bold title in the tooltip
-                        },
-                        bodyFont: {
-                            family: 'Montserrat',
-                            size: 14,
-                        },
-                        borderColor: '#FFD700',
-                        borderWidth: 1,
-                        caretPadding: 10,
-                        cornerRadius: 10, // Rounded corners for the tooltip
-                    }
-                },
-                animation: {
-                    duration: 1500, // Slow down the animation for effect
-                    easing: 'easeInOutQuad' // Smooth animation
+                    }]
                 }
             }
         });
-
         // Download PDF functionality
         const downloadBtn = document.getElementById('download-pdf');
 

@@ -315,7 +315,7 @@
         <select id="sectionSelect" onchange="scrollToSection(this.value)">
             <option value="">Select a section</option>
             {% for category, questions in questions.items %}
-                <option value="{{ category }}">{{ category|title }} Questions</option>
+                <option value="{{ category }}">{{ category|title }}</option>
             {% endfor %}
         </select>
     </div>
@@ -326,7 +326,7 @@
             <h2>Career Quiz</h2>
 
             {% for category, questions in questions.items %}
-                <h3>{{ category|title }} Questions</h3>
+                <h3>{{ category|title }}</h3>
                 <div id="{{ category }}" class="section">
                     {% for question in questions %}
                         <p>{{ question.question }}</p>
